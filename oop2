@@ -1,0 +1,103 @@
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+class Data; 
+
+class Student{
+    // Name, Roll number, Class, division, Date of Birth, Blood group
+    private:
+    string name;
+    int rollNo;
+    string cls;
+    char* div;
+    string DOB;
+    string bloodGrp;
+    static int count;
+    public:
+    Student(){
+    name = "";
+    rollNo = 0;
+    cls = "";
+    div = new char;
+    DOB = "dd/mm/yyyy";
+    bloodGrp = "";
+    }
+    // ~Student(){
+    //     delete name;
+    //     delete rollNo;
+    // }
+    
+    inline void setValue(Data*);
+    inline void getValue(Data*);
+    static int getCount(){
+        return count;
+    }
+};
+
+class Data{
+    private:
+    int teleNo;
+    int dlNo;
+    friend class Student;
+    public:
+    inline void setValue(){
+        cout<<"Enter Telephone NUmber : ";
+       cin>>teleNo;
+       cout<<"Enter Driving Lincense Number : ";
+       cin>>dlNo;
+    }
+    inline void getValue(){
+        cout<<"\nTelephone NUmber : "<<teleNo<<"\nDriving Lincense Number : "<<dlNo;
+    }
+
+};
+
+inline void Student::setValue(Data* d){
+       cout<<"Enter Name : ";
+       cin>>name;
+       cout<<"Enter RollNumber : ";
+       cin>>rollNo;
+       cout<<"Enter Class : ";
+       cin>>cls;
+       cout<<"Enter Division : ";
+       cin>>div;
+       cout<<"Enter Date of Birth : ";
+       cin>>DOB;
+       cout<<"Enter BloodGroup : ";
+       cin>>bloodGrp;
+       d->setValue();
+    }
+
+inline void Student::getValue(Data* d)
+    {
+        cout<<"\nName : "<<name<<"\nRollNumber : "<<rollNo<<"\nClass : "<<cls<<"\nDivision : "<<div<<"\nDate of Birth : "<<DOB<<"\nBloodGroup : "<<bloodGrp<<endl;
+        d->getValue();
+    }
+
+
+
+int main(){
+    Data* d[100];
+    Student* s[100];
+    char ch;
+    int n=0;
+    cout<<"Data Enter has started \n\n\n\n";
+    do{
+    d[n] = new Data;
+    s[n] = new Student;
+    s[n]->setValue(d[n]);
+    n++;
+    cout<<"Do you want to add another student (y/n) : ";
+        cin>>ch;s;
+}
+    while(ch=='y'||ch=='Y');
+    
+    for(int i = 0; i>n+1;i++){
+    	cout<<"---------------------------------------------------------------"<<endl;
+    	s[i]->getValue(d[i]);
+	}
+    
+    return 0;
+}
