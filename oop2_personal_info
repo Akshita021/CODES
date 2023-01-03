@@ -1,103 +1,71 @@
 #include<iostream>
-#include<string>
-
 using namespace std;
-
-class Data; 
-
-class Student{
-    // Name, Roll number, Class, division, Date of Birth, Blood group
+class student_information
+{ 
     private:
-    string name;
-    int rollNo;
-    string cls;
-    char* div;
-    string DOB;
-    string bloodGrp;
-    static int count;
+      	string Name;
+      	string Class;
+      	string Div;
+      	int Roll_no;
+      	string DOB;
+      	string Blood_group;
+      	string Address;
+      	int Telephone_no;
+      	double Driving_licence;
+		 
     public:
-    Student(){
-    name = "";
-    rollNo = 0;
-    cls = "";
-    div = new char;
+	    void get();
+		void show(); 
+	
+	public:
+    student_information(){
+    Name = "";
+    Roll_no = 0;
+    Class = "";
+    Div = new char;
     DOB = "dd/mm/yyyy";
-    bloodGrp = "";
-    }
-    // ~Student(){
-    //     delete name;
-    //     delete rollNo;
-    // }
-    
-    inline void setValue(Data*);
-    inline void getValue(Data*);
-    static int getCount(){
-        return count;
-    }
+    Blood_group = ""; 	
+ }
 };
 
-class Data{
-    private:
-    int teleNo;
-    int dlNo;
-    friend class Student;
-    public:
-    inline void setValue(){
-        cout<<"Enter Telephone NUmber : ";
-       cin>>teleNo;
-       cout<<"Enter Driving Lincense Number : ";
-       cin>>dlNo;
-    }
-    inline void getValue(){
-        cout<<"\nTelephone NUmber : "<<teleNo<<"\nDriving Lincense Number : "<<dlNo;
-    }
-
-};
-
-inline void Student::setValue(Data* d){
-       cout<<"Enter Name : ";
-       cin>>name;
-       cout<<"Enter RollNumber : ";
-       cin>>rollNo;
-       cout<<"Enter Class : ";
-       cin>>cls;
-       cout<<"Enter Division : ";
-       cin>>div;
-       cout<<"Enter Date of Birth : ";
-       cin>>DOB;
-       cout<<"Enter BloodGroup : ";
-       cin>>bloodGrp;
-       d->setValue();
-    }
-
-inline void Student::getValue(Data* d)
-    {
-        cout<<"\nName : "<<name<<"\nRollNumber : "<<rollNo<<"\nClass : "<<cls<<"\nDivision : "<<div<<"\nDate of Birth : "<<DOB<<"\nBloodGroup : "<<bloodGrp<<endl;
-        d->getValue();
-    }
-
-
-
-int main(){
-    Data* d[100];
-    Student* s[100];
-    char ch;
-    int n=0;
-    cout<<"Data Enter has started \n\n\n\n";
-    do{
-    d[n] = new Data;
-    s[n] = new Student;
-    s[n]->setValue(d[n]);
-    n++;
-    cout<<"Do you want to add another student (y/n) : ";
-        cin>>ch;s;
+void student_information::get(void)
+{
+	cout<<"Enter the Student Name: "<<endl;
+	cin>>Name;
+	cout<<"Enter the Class: "<<endl;
+	cin>>Class;
+	cout<<"Enter the Division: "<<endl;
+	cin>>Div;
+	cout<<"Enter the Roll no: "<<endl;
+	cin>>Roll_no;
+	cout<<"Enter the Date of Birth: "<<endl;
+	cin>>DOB;
+	cout<<"Enter the Blood Group: "<<endl;
+	cin>>Blood_group;
+	cout<<"Enter the Address: "<<endl;
+	cin>>Address;
+	cout<<"Enter the Telephone no: "<<endl;
+	cin>>Telephone_no;
+	cout<<"Enter the Driving Licence no: "<<endl;
+	cin>>Driving_licence;
+	
+} 
+void student_information::show()
+{
+	cout<<"Name: "<<Name<<endl;
+	cout<<"Class: "<<Class<<endl;
+	cout<<"Division: "<<Div<<endl;
+	cout<<"Roll no: "<<Roll_no<<endl;
+	cout<<"DoB: "<<DOB<<endl;
+	cout<<"Blood Group: "<<Blood_group<<endl;
+	cout<<"Address: "<<Address<<endl;
+	cout<<"Telephone no: "<<Telephone_no<<endl;
+	cout<<"Driving Licence: "<<Driving_licence<<endl;
 }
-    while(ch=='y'||ch=='Y');
-    
-    for(int i = 0; i>n+1;i++){
-    	cout<<"---------------------------------------------------------------"<<endl;
-    	s[i]->getValue(d[i]);
-	}
-    
-    return 0;
+int main()
+{
+	student_information std1;
+	std1.get();
+	std1.show();
+	return(0);
 }
