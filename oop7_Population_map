@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+#include <map>
+using namespace std;
+
+int main(){
+	typedef map<string,int> myMap;
+	myMap population;
+	population.insert(make_pair("Maharashtra",120));
+	population.insert(make_pair("Assam",89));
+	
+	myMap::iterator itrr = --population.end();
+	for(itrr = population.begin() ; itrr != population.end();++itrr){
+		cout<<"Population of "<<itrr->first<<" is "<<itrr->second<<" millions"<<endl;
+	}
+	char c;
+	do{
+		string state;
+		cout<<"Enter the state you want: ";
+		cin>>state;
+		itrr = population.find(state);
+		if(itrr!=population.end()){
+			cout<<"Population of "<<state<<" is "<<itrr->second<<" millions"<<endl;
+		}
+		else{
+			cout<<state<<" is not in database"<<endl;
+		}
+		cout<<"Do you wish to continue?(y/n):";
+    cin >>c;
+	}
+     while (c == 'y' || c == 'Y');
+}
