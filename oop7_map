@@ -1,0 +1,22 @@
+#include<iostream>
+#include<map>
+using namespace std;
+
+int main(){
+
+    map<string,int> statedb;
+    
+    statedb["Odisha"] = 100;
+    statedb["Tamilnadu"] = 200;
+    statedb["Maharashtra"] = 150;
+    statedb["Telengana"] = 160;
+    statedb["Tripura"] = 125;
+    
+    string s;
+    cout<<"Enter name of the state: ";
+    cin>>s;
+    cout<<"State "<<s<< " has a population of "<<statedb[s]<<endl;
+
+
+    return 0;
+}
