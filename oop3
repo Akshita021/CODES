@@ -1,0 +1,100 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class publication
+{
+	private:
+		string title;
+		float price;
+	
+	public:
+	publication()
+	{
+		title="";
+		price=0;
+	    }
+	    publication(string t, float p)
+	    {
+	    title=t;
+	    price=p;
+		}
+		void getdata(void)
+		{
+			cout<<"Enter title of publication: ";
+			cin>>title;
+			cout<<"Enter price of publication: ";
+			cin>>price;
+		}
+		void showdata(void)
+		{
+			cout<<"Publications title: "<<title<<endl;
+			cout<<"Publications price: "<<price<<endl;
+		}		
+};
+class book:public publication
+{
+	int page_count;
+	
+	public:
+		     book()
+		    {
+		    	page_count=0;
+			}
+			book(string t, float p,int pc):publication(t,p)
+			{
+				page_count=pc;
+			}
+		    void getdata(void)
+		    {
+		    publication::getdata();  //call publication class function to get getdata
+		    cout<<"Enter book page count: ";  //Acquire book data from user
+		    cin>>page_count;
+		    }
+		    void showdata(void)
+		    {
+		    publication::showdata();  //Show Publication data
+		    cout<<"book page count: "<<page_count<<endl;  // Show book data
+			}			
+};
+
+class tape:public publication
+{
+		float playing_time;
+	
+	public:
+		tape()
+		{
+			playing_time=0.0;
+        }
+         tape(string t, float p, float tim):publication(t,p)
+		 {
+		 playing_time=tim;
+		 }
+		 void getdata(void)
+		 {
+		 publication::getdata();
+		 cout<<"Enter tape's playing time:";
+		 cin>> playing_time;
+		 }
+		 void showdata(void)
+		 {
+		 publication::showdata();
+		 cout<<"tape's playing time: "<<playing_time<<endl;
+		 }
+};
+int main()
+{
+	cout<<endl<<"book data"<<endl;
+	book b("poor dad",300,250);
+	b.showdata();
+	cout<<endl<<"CD data"<<endl;
+	tape c("rich dad",180,170.5);
+	c.showdata();
+	cout<<"\n Enter New details of book :\n";
+	b.getdata();
+	c.getdata();
+	cout<<"\n\n Book data entered by user :\n";
+	b.showdata();
+	c.showdata();
+	return 0;
+}
