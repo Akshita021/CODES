@@ -1,0 +1,30 @@
+#include<iostream>
+#include<fstream>
+using namespace std;
+
+int main()
+{
+	ofstream out;
+	out.open("ItemList.txt");
+	
+	cout<<"\n Creating list of items...";
+	out<<"****Grocery Item List****";
+	out<<"\n"<<"Sugar-1Kg";
+	out<<"\n"<<"Salt-2packs";
+	out<<"\n"<<"Rice-2Kg";
+	out<<"\n"<<"Tea-1pack";
+	out.close();
+	
+	char line[80];
+	cout<<"\n Reading and Printing Item List...";
+	
+	ifstream i;
+	
+	i.open("ItemList.txt");
+	while(i)
+	{
+		i.get(line,40);
+		cout<<"\n"<<line;
+	}
+	i.close();
+}
